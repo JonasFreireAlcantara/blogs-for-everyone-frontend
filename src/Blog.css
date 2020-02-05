@@ -1,0 +1,8 @@
+body {
+  --main-green-color: #355723;
+  --main-green-color-opacity-thirty-percent: rgba(53, 87, 35, 0.3);
+  --main-separator-lines-color: #c0c0c0;
+
+  margin: 0;
+  padding: 0;
+}

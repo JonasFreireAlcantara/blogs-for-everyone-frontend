@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i&display=swap");
+
+header {
+  width: 95%;
+  height: 150px;
+  padding: 0px 2.5% 0px;
+  top: 0;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+}
+
+header .header-content {
+  /* background-color: blue; */
+  width: 94%;
+  height: 90%;
+  padding: 0px 3% 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+header .header-content .blog-logo {
+  width: auto;
+  height: 90%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px var(--main-green-color-opacity-thirty-percent);
+}
+
+header .header-content .blog-title {
+  background-color: yellow;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header .header-content .blog-title .title {
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--main-green-color);
+  text-align: end;
+}
+
+header .header-content .blog-title .subtitle {
+  font-size: 11px;
+  font-weight: normal;
+  color: var(--main-green-color);
+  text-align: end;
+}
+
+header .header-content .blog-title nav {
+  background-color: chocolate;
+  width: 100%;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header .header-horizontal-line {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--main-separator-lines-color);
+  box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
+}
