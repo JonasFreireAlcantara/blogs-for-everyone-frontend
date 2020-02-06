@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i&display=swap");
-
 header {
+  position: absolute;
   width: 95%;
   height: 200px;
   padding: 0px 2.5% 0px;
@@ -71,7 +70,7 @@ header .header-content .blog-title nav {
   font-weight: bold;
 }
 
-header .header-horizontal-line {
+header > hr {
   width: 100%;
   border: 0;
   border-bottom: 1px solid var(--main-separator-lines-color);

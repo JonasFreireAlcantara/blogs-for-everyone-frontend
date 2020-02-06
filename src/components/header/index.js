@@ -29,7 +29,7 @@ export default function Header() {
         </div>
       </div>
 
-      <hr className="header-horizontal-line" />
+      <hr />
     </header>
   );
 }
