@@ -74,5 +74,4 @@ header > hr {
   width: 100%;
   border: 0;
   border-bottom: 1px solid var(--main-separator-lines-color);
-  box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
 }

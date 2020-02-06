@@ -1,0 +1,36 @@
+#last-posts {
+  /* background-color: salmon; */
+  /* position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-40%); */
+  float: left;
+  width: 300px;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  font-family: "Ubuntu", sans-serif;
+}
+
+#last-posts > #last-posts-contents {
+  /* background-color: aqua; */
+  margin: 10px 20px 10px;
+}
+
+#last-posts > #last-posts-contents > strong {
+  color: var(--main-green-color);
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 35px;
+}
+
+#last-posts > #last-posts-contents > p {
+  color: var(--main-green-color);
+}
+
+#last-posts > #last-posts-vertical-line {
+  width: 2px;
+  height: 100%;
+  background-color: var(--main-separator-lines-color);
+}
