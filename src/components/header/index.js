@@ -16,13 +16,13 @@ export default function Header() {
           <strong className="subtitle">10110001 11010110</strong>
 
           <nav>
-            <Link className="navigation-button" to="/">
+            <Link className="header-navigation-button" to="/">
               Home
             </Link>
-            <Link className="navigation-button" to="/about">
+            <Link className="header-navigation-button" to="/about">
               Sobre
             </Link>
-            <Link className="navigation-button" to="/categories">
+            <Link className="header-navigation-button" to="/categories">
               Categorias
             </Link>
           </nav>
