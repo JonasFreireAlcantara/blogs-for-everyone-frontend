@@ -5,7 +5,7 @@ footer {
 }
 
 footer > hr {
-  background-color: red;
+  /* background-color: red; */
   width: 100%;
   border: 0;
   border-top: 1px solid var(--main-separator-lines-color);

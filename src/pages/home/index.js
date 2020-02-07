@@ -7,16 +7,25 @@ import Footer from "../../components/footer";
 import LastPosts from "../../components/last-posts";
 import PostPreview from "../../components/post-preview";
 
+const posts = [1, 2, 3, 4];
+
 const Home = () => {
   return (
     <div id="home">
       <Header />
 
-      <section>
+      <main>
         <LastPosts />
 
-        <PostPreview />
-      </section>
+        <section id="home-posts-preview">
+          {posts.map(post => (
+            <>
+              <PostPreview />
+              <hr className="home-posts-preview-horizontal-line" />
+            </>
+          ))}
+        </section>
+      </main>
 
       <Footer />
     </div>
