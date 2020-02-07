@@ -1,0 +1,14 @@
+#about {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#about > section {
+  flex: 1;
+}
+
+#about > section > aside {
+  margin: 50px 0px 50px;
+}

@@ -1,13 +1,19 @@
 import React from "react";
 
+import "./styles.css";
+
 import Header from "../../components/header";
+import LastPosts from "../../components/last-posts";
 import Footer from "../../components/footer";
 
 const About = () => {
   return (
-    <div>
+    <div id="about">
       <Header />
-      <h1>About</h1>
+
+      <section>
+        <LastPosts />
+      </section>
 
       <Footer />
     </div>

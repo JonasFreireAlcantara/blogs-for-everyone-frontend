@@ -1,8 +1,6 @@
 footer {
-  position: absolute;
-  bottom: 0;
   width: 95%;
-  height: 100px;
+  height: 60px;
   padding: 0px 2.5% 0px;
 }
 
@@ -10,12 +8,11 @@ footer > hr {
   background-color: red;
   width: 100%;
   border: 0;
-  border-top: 2px solid var(--main-separator-lines-color);
+  border-top: 1px solid var(--main-separator-lines-color);
   box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
 }
 
 footer > strong {
-  /* background-color: blue; */
   width: 100%;
   height: 90%;
   display: flex;

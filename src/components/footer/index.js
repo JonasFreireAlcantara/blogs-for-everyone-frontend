@@ -5,8 +5,9 @@ import "./styles.css";
 const Footer = () => {
   return (
     <footer>
+      <div></div>
       <hr />
-      <strong>&copy; 2020 Copyright</strong>
+      <strong>Jonas Freire &copy; 2020 Copyright all rights reserved</strong>
     </footer>
   );
 };

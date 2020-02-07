@@ -1,0 +1,14 @@
+#categories {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#categories > section {
+  flex: 1;
+}
+
+#categories > section > aside {
+  margin: 50px 0px 50px;
+}

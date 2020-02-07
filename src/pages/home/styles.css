@@ -1,0 +1,14 @@
+#home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#home > section {
+  flex: 1;
+}
+
+#home > section > aside {
+  margin: 50px 0px 50px;
+}
