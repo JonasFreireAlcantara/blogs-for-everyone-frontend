@@ -1,6 +1,6 @@
 .post-preview {
   /* background-color: cadetblue; */
-  width: 650px;
+  width: 100%;
   height: 300px;
   font-family: "Ubuntu", sans-serif;
 }
@@ -38,7 +38,7 @@
 
 .post-preview-text {
   /* background-color: darkgoldenrod; */
-  width: 450px;
+  width: 70%;
   margin: 0;
   padding-right: 20px;
   font-size: 14px;
@@ -48,7 +48,7 @@
 
 .post-preview-image {
   /* background-color: darkolivegreen; */
-  width: 200px;
+  width: 30%;
   height: auto;
   /* float: right; */
 }

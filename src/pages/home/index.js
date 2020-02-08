@@ -19,10 +19,10 @@ const Home = () => {
 
         <section id="home-posts-preview">
           {posts.map(post => (
-            <>
+            <div key={post}>
               <PostPreview />
               <hr className="home-posts-preview-horizontal-line" />
-            </>
+            </div>
           ))}
         </section>
       </main>
