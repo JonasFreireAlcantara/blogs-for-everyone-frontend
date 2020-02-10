@@ -1,0 +1,35 @@
+.accordion-menu-wrapper {
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.accordion-menu-list {
+  /* background-color: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.accordion-menu-list hr {
+  width: 60%;
+  border: 0;
+  border-bottom: 1px solid #c0c0c0;
+  margin: 5px 0px 10px 0px;
+}
+.accordion-menu-element {
+  /* background-color: coral; */
+  text-decoration: none;
+  color: var(--main-green-color);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.5s linear;
+  padding-left: 3px;
+}
+
+.accordion-menu-element:hover {
+  background-color: var(--main-green-color);
+  color: white;
+}
