@@ -1,18 +1,31 @@
 .accordion-menu-wrapper {
   /* background-color: aquamarine; */
-  display: flex;
-  flex-direction: column;
   font-family: "Ubuntu", sans-serif;
+  height: 20px;
+  width: 50px;
+  cursor: pointer;
 }
 
 .accordion-menu-list {
-  /* background-color: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease-out;
+}
+
+.accordion-menu-wrapper:hover .accordion-menu-list {
+  /* background-color: burlywood; */
+  /* margin-top: 10px; */
+  transform: scaleY(1);
+  transform-origin: top;
   display: flex;
   flex-direction: column;
   width: fit-content;
 }
 
-.accordion-menu-list hr {
+.accordion-menu-wrapper hr {
   width: 60%;
   border: 0;
   border-bottom: 1px solid #c0c0c0;
@@ -27,6 +40,10 @@
   font-weight: bold;
   transition: background-color 0.5s linear;
   padding-left: 3px;
+}
+
+.accordion-menu-list .accordion-menu-element:first-child {
+  margin-top: 10px;
 }
 
 .accordion-menu-element:hover {

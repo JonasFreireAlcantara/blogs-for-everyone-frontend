@@ -9,14 +9,14 @@ const AccordionMenu = props => {
   return (
     <>
       {url && (
-        <Link className={`${props.className}`} to={url}>
+        <Link className={`${props.className} accordion-menu-wrapper`} to={url}>
           {title}
         </Link>
       )}
 
       {!url && (
-        <div className="accordion-menu-wrapper">
-          <strong className={`${props.className}`}>{title}</strong>
+        <div className={`${props.className} accordion-menu-wrapper`}>
+          <strong>{title}</strong>
           <div className="accordion-menu-list">
             {links.map(link => (
               <>

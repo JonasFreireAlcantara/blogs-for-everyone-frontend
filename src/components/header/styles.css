@@ -62,7 +62,8 @@ header .header-content .blog-title nav {
 
 .header-navigation-button {
   color: var(--main-green-color);
-  margin-left: 10px;
+  text-decoration: none;
+  margin: 0px 0px 10px 10px;
   font-size: 15px;
   font-weight: bold;
 }

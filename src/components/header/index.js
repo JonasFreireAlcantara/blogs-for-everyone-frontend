@@ -1,9 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import "./styles.css";
 
 import ReactLogo from "../../assets/react-logo.png";
+
+import AccordionMenu from "../accordion-menu";
+
+const links = [
+  {
+    title: "Docker",
+    url: "url1"
+  },
+  {
+    title: "Machine Learning",
+    url: "url2"
+  },
+  {
+    title: "Web Development",
+    url: "url3"
+  },
+  {
+    title: "Security",
+    url: "url4"
+  }
+];
 
 export default function Header() {
   return (
@@ -16,15 +36,21 @@ export default function Header() {
           <strong className="subtitle">10110001 11010110</strong>
 
           <nav>
-            <Link className="header-navigation-button" to="/">
-              Home
-            </Link>
-            <Link className="header-navigation-button" to="/about">
-              Sobre
-            </Link>
-            <Link className="header-navigation-button" to="/categories">
-              Categorias
-            </Link>
+            <AccordionMenu
+              className="header-navigation-button"
+              title="Home"
+              url="/"
+            ></AccordionMenu>
+            <AccordionMenu
+              className="header-navigation-button"
+              title="Sobre"
+              url="/about"
+            ></AccordionMenu>
+            <AccordionMenu
+              className="header-navigation-button"
+              title="Categorias"
+              links={links}
+            ></AccordionMenu>
           </nav>
         </div>
       </div>
