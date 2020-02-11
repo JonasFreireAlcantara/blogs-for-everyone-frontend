@@ -19,16 +19,15 @@ const AccordionMenu = props => {
           <strong>{title}</strong>
           <div className="accordion-menu-list">
             {links.map(link => (
-              <>
+              <div key={link.url}>
                 <Link
                   className="accordion-menu-element"
                   to={link.url}
-                  key={link.url}
                 >
                   {link.title}
                 </Link>
                 <hr />
-              </>
+              </div>
             ))}
           </div>
         </div>

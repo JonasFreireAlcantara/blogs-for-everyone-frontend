@@ -4,29 +4,57 @@ import "./styles.css";
 
 import ReactLogo from "../../assets/react-logo.png";
 
-const PostPreview = () => {
+const monthsPortuguese = {
+  0: 'Janeiro',
+  1: 'Fevereiro',
+  2: 'Março',
+  3: 'Abril',
+  4: 'Maio',
+  5: 'Junho',
+  6: 'Julho',
+  7: 'Agosto',
+  8: 'Setembro',
+  9: 'Outubro',
+  10: 'Novembro',
+  11: 'Dezembro',
+}
+
+const PostPreview = (props) => {
+  
+  function getTextFromElements(elements) {
+    const paragraphs = elements.filter(element => element.element === 'paragraph');
+    return paragraphs[0].content;
+  }
+
+  function formatDate(dateString) {
+    const elementsOfDate = dateString.split('/');
+    const day = elementsOfDate[0];
+    const month = parseInt(elementsOfDate[1]);
+    const year = elementsOfDate[2];
+
+    return `${day} de ${monthsPortuguese[month]} de ${year}`;
+  }
+
+  const { post } = props;
+
+  const { title, author, postDate } = post;
+  const elements = props.post.elements || [];
+  
+
+  const text = getTextFromElements(elements);
+  const dateFormated = formatDate(postDate);
+
   return (
     <article className="post-preview">
       <strong className="post-preview-title">
-        Título do Post - Que post mais legal hein ?
+        {title}
       </strong>
       <p className="post-preview-author">
-        Postado por <span>Jonas Freire</span>, em 03 de Janeiro de 2020
+        Postado por <span>{author}</span>, em {dateFormated}
       </p>
-
       <div>
         <p className="post-preview-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
-          velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate
-          commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed
-          eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam
-          nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet
-          quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu
-          diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis
-          sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula,
-          a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci
-          ullamcorper at ultricies metus viverra. Pellentesque arcu mauris,
-          malesuada quis ornare accumsan, blandit sed diam.
+          {text}
         </p>
         <img
           className="post-preview-image"

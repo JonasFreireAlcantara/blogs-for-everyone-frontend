@@ -1,4 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
+
+import api from '../../services/api';
 
 import "./styles.css";
 
@@ -7,29 +9,45 @@ import Footer from "../../components/footer";
 import LastPosts from "../../components/last-posts";
 import PostPreview from "../../components/post-preview";
 
-const posts = [1, 2, 3, 4];
+class Home extends Component {
 
-const Home = () => {
-  return (
-    <div id="home">
-      <Header />
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-      <main>
-        <LastPosts />
+  async componentDidMount() {
+    const posts = (await api.get(`/posts`)).data;
 
-        <section id="home-posts-preview">
-          {posts.map(post => (
-            <div key={post}>
-              <PostPreview />
-              <hr className="home-posts-preview-horizontal-line" />
-            </div>
-          ))}
-        </section>
-      </main>
+    this.setState({ posts });
+  }
 
-      <Footer />
-    </div>
-  );
+  render() {
+    const posts = this.state.posts || [];
+
+    console.log(posts);
+
+    return (
+      <div id="home">
+        <Header />
+
+        <main>
+          <LastPosts />
+
+          <section id="home-posts-preview">
+            {posts.map(post => (
+              <div key={post._id}>
+                <PostPreview post={post} />
+                <hr className="home-posts-preview-horizontal-line" />
+              </div>
+            ))}
+          </section>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
 };
 
 export default Home;

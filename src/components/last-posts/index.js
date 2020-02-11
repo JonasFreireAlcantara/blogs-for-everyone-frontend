@@ -32,7 +32,7 @@ class LastPosts extends Component {
           ))}
         </div>
 
-        {/* <div id="last-posts-vertical-line"></div> */}
+        <div id="last-posts-vertical-line"></div>
       </aside>
     );
   }
