@@ -1,0 +1,82 @@
+#post {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+#post > main {
+  /* background-color: darkturquoise; */
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-content {
+  /* background-color: cadetblue; */
+  width: 95%;
+  height: 100%;
+  margin: 40px 2.5% 0px;
+}
+
+.post-content > h1 {
+  /* background-color: aqua; */
+  display: block;
+  margin: 0;
+  color: var(--main-green-color);
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.post-content > h2 {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--main-green-color);
+  margin: 5px 0px 0px 15px;
+}
+
+.post-content > h2 > span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.post-content-main-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 1px 1px 3px var(--main-green-color-opacity-fifty-percent);
+  border-radius: 2px;
+}
+
+.post-content-main-image > img {
+  width: 100%;
+  transform: translateY(-25%);
+}
+
+.post-content-paragraph {
+  /* background-color: coral; */
+  width: 100%;
+  height: fit-content;
+  text-align: justify;
+  color: var(--main-green-color);
+  margin-bottom: 30px;
+}
+
+.post-content > .post-content-paragraph:first-of-type {
+  margin-top: 40px;
+}
+
+.post-content-code {
+  /* background-color: coral; */
+  display: block;
+  height: fit-content;
+  border: 1px solid var(--main-green-color);
+  border-radius: 8px;
+  padding: 0.5em;
+  margin: 0px 5% 30px;
+}

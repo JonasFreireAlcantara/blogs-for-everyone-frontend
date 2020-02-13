@@ -6,6 +6,7 @@ import "./Blog.css";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Categories from "./pages/categories";
+import Post from "./pages/post";
 
 const Blog = () => {
   return (
@@ -15,6 +16,7 @@ const Blog = () => {
           <Route path="/" exact={true} component={Home} />
           <Route path="/about" component={About} />
           <Route path="/category/:categoryUrl" component={Categories} />
+          <Route path="/post/:postId" component={Post} />
         </Switch>
       </BrowserRouter>
     </div>
