@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { formatDate } from "../../lib/date";
 
@@ -24,7 +25,9 @@ const PostPreview = props => {
 
   return (
     <article className="post-preview">
-      <strong className="post-preview-title">{title}</strong>
+      <Link className="post-preview-title" to={`/post/${post._id}`}>
+        {title}
+      </Link>
       <p className="post-preview-author">
         Postado por <span>{author}</span>, em {dateFormated}
       </p>
