@@ -8,6 +8,8 @@ import About from "./pages/about";
 import Categories from "./pages/categories";
 import Post from "./pages/post";
 
+require("dotenv").config();
+
 const Blog = () => {
   return (
     <div className="Blog">
