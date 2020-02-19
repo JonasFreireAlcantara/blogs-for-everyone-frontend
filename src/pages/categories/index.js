@@ -1,40 +1,47 @@
 import React, { Component } from "react";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 import "./styles.css";
 
 import Header from "../../components/header";
 import LastPosts from "../../components/last-posts";
-import PostPreview from '../../components/post-preview';
+import PostPreview from "../../components/post-preview";
 import Footer from "../../components/footer";
 
 class Categories extends Component {
-  
   constructor() {
     super();
     this.state = {};
   }
 
   async componentDidMount() {
-    const { categoryUrl } = this.props.match.params;
-
-    const posts = (await api.get(`/categories/posts/${categoryUrl}`)).data;
-    const category = (await api.get(`/categories/${categoryUrl}`)).data;
-
-    this.setState({ posts, category });
+    this.fetchCategories();
+    this.fetchPosts();
   }
 
-  async componentDidUpdate() {
-    const { categoryUrl } = this.props.match.params;
+  componentDidUpdate(prevProps) {
+    const { categoryUrl: previousCategoryUrl } = prevProps.match.params;
+    const { categoryUrl: actualCategoryUrl } = this.props.match.params;
 
-    const posts = (await api.get(`/categories/posts/${categoryUrl}`)).data;
-    const category = (await api.get(`/categories/${categoryUrl}`)).data;
-
-    this.setState({ posts, category });
+    if (previousCategoryUrl !== actualCategoryUrl) {
+      this.fetchCategories();
+      this.fetchPosts();
+    }
   }
 
-  
+  async fetchCategories() {
+    const { categoryUrl } = this.props.match.params;
+    const category = (await api.get(`/categories/${categoryUrl}`)).data;
+    this.setState({ category });
+  }
+
+  async fetchPosts() {
+    const { categoryUrl } = this.props.match.params;
+    const posts = (await api.get(`/categories/posts/${categoryUrl}`)).data;
+    this.setState({ posts });
+  }
+
   render() {
     const posts = this.state.posts || [];
     const category = this.state.category || { name: "" };
@@ -61,6 +68,6 @@ class Categories extends Component {
       </div>
     );
   }
-};
+}
 
 export default Categories;

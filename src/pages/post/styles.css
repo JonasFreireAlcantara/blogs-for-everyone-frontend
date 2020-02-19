@@ -78,5 +78,14 @@
   border: 1px solid var(--main-green-color);
   border-radius: 8px;
   padding: 0.5em;
-  margin: 0px 5% 30px;
+  margin: 0px 5% 40px;
+}
+
+.post-content-image-center {
+  width: 50%;
+  height: auto;
+  margin: 0px 50% 30px;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 5px var(--main-green-color-opacity-fifty-percent);
+  border-radius: 4px;
 }

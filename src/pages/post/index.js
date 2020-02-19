@@ -34,9 +34,17 @@ class Post extends Component {
         </p>
       ),
       code: (
-        <div className="post-content-code">
-          <kbd key={index}>{element.content}</kbd>
+        <div className="post-content-code" key={index}>
+          <kbd>{element.content}</kbd>
         </div>
+      ),
+      imageCenter: (
+        <img
+          className="post-content-image-center"
+          key={index}
+          alt={element.content}
+          src={element.content}
+        />
       )
     }[element.element];
   }
