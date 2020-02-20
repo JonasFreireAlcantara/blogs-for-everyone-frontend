@@ -20,9 +20,21 @@
   margin-bottom: 35px;
 }
 
-#last-posts > #last-posts-contents > p {
+.last-posts-links {
+  display: block;
   color: var(--main-green-color);
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 4px;
   text-align: justify;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s linear;
+}
+
+.last-posts-links:hover {
+  background-color: var(--main-green-color);
+  color: white;
 }
 
 #last-posts > #last-posts-vertical-line {

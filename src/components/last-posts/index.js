@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 
@@ -28,7 +29,13 @@ class LastPosts extends Component {
           <strong>Últimas Postagens:</strong>
 
           {firstFourLastPostsData.map(post => (
-            <p key={post._id}>{post.title}</p>
+            <Link
+              className="last-posts-links"
+              key={post._id}
+              to={`/post/${post._id}`}
+            >
+              {post.title}
+            </Link>
           ))}
         </div>
 
