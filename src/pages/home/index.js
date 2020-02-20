@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 import "./styles.css";
 
@@ -10,7 +10,6 @@ import LastPosts from "../../components/last-posts";
 import PostPreview from "../../components/post-preview";
 
 class Home extends Component {
-
   constructor() {
     super();
     this.state = {};
@@ -24,8 +23,6 @@ class Home extends Component {
 
   render() {
     const posts = this.state.posts || [];
-
-    console.log(posts);
 
     return (
       <div id="home">
@@ -48,6 +45,6 @@ class Home extends Component {
       </div>
     );
   }
-};
+}
 
 export default Home;
