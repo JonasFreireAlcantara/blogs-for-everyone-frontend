@@ -46,6 +46,8 @@ class Categories extends Component {
     const posts = this.state.posts || [];
     const category = this.state.category || { name: "" };
 
+    document.title = category.name;
+
     return (
       <div id="categories">
         <Header />

@@ -9,6 +9,8 @@ import Footer from "../../components/footer";
 import ReactLogo from "../../assets/react-logo.png";
 
 const About = () => {
+  document.title = "Sobre";
+
   return (
     <div id="about">
       <Header />

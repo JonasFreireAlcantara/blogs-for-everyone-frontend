@@ -13,6 +13,8 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {};
+
+    document.title = "Espaço da Tecnologia";
   }
 
   async componentDidMount() {
