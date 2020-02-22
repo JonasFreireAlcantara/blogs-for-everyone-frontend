@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 import "./styles.css";
 
-import ReactLogo from "../../assets/react-logo.png";
+import BlogLogo from "../../assets/espaco-da-tecnologia-logo.jpg";
 
 import AccordionMenu from "../accordion-menu";
 
@@ -27,30 +27,26 @@ import AccordionMenu from "../accordion-menu";
 //   }
 // ];
 
-
 class Header extends Component {
-
   constructor() {
     super();
     this.state = {};
   }
 
-
   async componentDidMount() {
-    const categories = await (await api.get('/categories')).data;
-  
+    const categories = await (await api.get("/categories")).data;
+
     let links = [];
-  
+
     if (categories) {
-      links = categories.map( category => ({
+      links = categories.map(category => ({
         title: category.name,
-        url: `/category/${category.url}`,
-      }))
+        url: `/category/${category.url}`
+      }));
     }
-    
+
     this.setState({ links });
   }
-
 
   render() {
     const links = this.state.links || [];
@@ -58,7 +54,11 @@ class Header extends Component {
     return (
       <header>
         <div className="header-content">
-          <img className="blog-logo" alt="Espaço da Tecnologia" src={ReactLogo} />
+          <img
+            className="blog-logo"
+            alt="Espaço da Tecnologia"
+            src={BlogLogo}
+          />
 
           <div className="blog-title">
             <strong className="title">Espaço da Tecnologia</strong>
@@ -86,8 +86,8 @@ class Header extends Component {
 
         <hr />
       </header>
-    )
-  };
+    );
+  }
 }
 
 export default Header;
