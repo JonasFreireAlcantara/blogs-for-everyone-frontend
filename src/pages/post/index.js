@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { DiscussionEmbed } from "disqus-react";
 
 import { formatDate } from "../../lib/date";
 import api from "../../services/api";
@@ -22,6 +23,8 @@ class Post extends Component {
 
     const post = (await api.get(`/posts/${postId}`)).data;
     // console.log(post);
+
+    document.title = post.title || "Blog Frontend";
 
     this.setState({ post });
   }
@@ -57,7 +60,12 @@ class Post extends Component {
 
     const dateFormated = formatDate(postDate);
 
-    // console.log(elements);
+    const disqusShortname = "espaco-da-tecnologia";
+    const disqusConfig = {
+      url: `https://espacodatecnologia.herokuapp.com${this.props.match.url}`,
+      identifier: post._id,
+      title
+    };
 
     return (
       <div id="post">
@@ -65,17 +73,26 @@ class Post extends Component {
 
         <main>
           <article className="post-content">
-            <h1>{title}</h1>
-            <h2>
-              Postado por <span>{author}</span>, em {dateFormated}
-            </h2>
+            {this.state.post && (
+              <>
+                <h1>{title}</h1>
+                <h2>
+                  Postado por <span>{author}</span>, em {dateFormated}
+                </h2>
 
-            <div className="post-content-main-image">
-              <img src={ReactLogo} alt={title} />
-            </div>
+                <div className="post-content-main-image">
+                  <img src={ReactLogo} alt={title} />
+                </div>
 
-            {elements.map((element, index) =>
-              this.renderElement(element, index)
+                {elements.map((element, index) =>
+                  this.renderElement(element, index)
+                )}
+
+                <DiscussionEmbed
+                  shortname={disqusShortname}
+                  config={disqusConfig}
+                />
+              </>
             )}
           </article>
         </main>
