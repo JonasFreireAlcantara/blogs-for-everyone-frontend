@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-import Header from "../../components/header";
-import LastPosts from "../../components/last-posts";
-import Footer from "../../components/footer";
+import Header from '../../components/header';
+import LastPosts from '../../components/last-posts';
+import Footer from '../../components/footer';
 
-import ReactLogo from "../../assets/react-logo.png";
+import ReactLogo from '../../assets/react-logo.png';
 
 const About = () => {
-  document.title = "Sobre";
+  global.document.title = 'Sobre';
 
   return (
     <div id="about">
