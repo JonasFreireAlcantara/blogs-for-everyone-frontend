@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-import "./styles.css";
+import './styles.css';
 
-import Header from "../../components/header";
-import Footer from "../../components/footer";
-import LastPosts from "../../components/last-posts";
-import PostPreview from "../../components/post-preview";
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import LastPosts from '../../components/last-posts';
+import PostPreview from '../../components/post-preview';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {};
 
-    document.title = "Espaço da Tecnologia";
+    global.document.title = 'Espaço da Tecnologia';
   }
 
   async componentDidMount() {
@@ -24,20 +24,20 @@ class Home extends Component {
   }
 
   render() {
-    const posts = this.state.posts || [];
+    const { posts = [] } = this.state;
 
     return (
-      <div id="home">
+      <div id='home'>
         <Header />
 
         <main>
           <LastPosts />
 
-          <section id="home-posts-preview">
+          <section id='home-posts-preview'>
             {posts.map(post => (
               <div key={post._id}>
                 <PostPreview post={post} />
-                <hr className="home-posts-preview-horizontal-line" />
+                <hr className='home-posts-preview-horizontal-line' />
               </div>
             ))}
           </section>

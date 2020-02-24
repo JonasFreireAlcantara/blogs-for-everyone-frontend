@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import { DiscussionEmbed } from "disqus-react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { DiscussionEmbed } from 'disqus-react';
 
-import { formatDate } from "../../lib/date";
-import api from "../../services/api";
+import { formatDate } from '../../lib/date';
+import api from '../../services/api';
 
-import "./styles.css";
+import './styles.css';
 
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
-import ReactLogo from "../../assets/react-logo.png";
+import ReactLogo from '../../assets/react-logo.png';
 
 class Post extends Component {
   constructor() {
@@ -24,26 +25,26 @@ class Post extends Component {
     const post = (await api.get(`/posts/${postId}`)).data;
     // console.log(post);
 
-    document.title = post.title || "Blog Frontend";
+    global.document.title = post.title || 'Blog Frontend';
 
     this.setState({ post });
   }
 
-  renderElement(element, index) {
+  static renderElement(element, index) {
     return {
       paragraph: (
-        <p className="post-content-paragraph" key={index}>
+        <p className='post-content-paragraph' key={index}>
           {element.content}
         </p>
       ),
       code: (
-        <div className="post-content-code" key={index}>
+        <div className='post-content-code' key={index}>
           <kbd>{element.content}</kbd>
         </div>
       ),
       imageCenter: (
         <img
-          className="post-content-image-center"
+          className='post-content-image-center'
           key={index}
           alt={element.content}
           src={element.content}
@@ -55,12 +56,12 @@ class Post extends Component {
   render() {
     const { post = {} } = this.state;
 
-    const { title = "", author = "", postDate = "" } = post;
+    const { title = '', author = '', postDate = '' } = post;
     const { elements = [] } = post;
 
     const dateFormated = formatDate(postDate);
 
-    const disqusShortname = "espaco-da-tecnologia";
+    const disqusShortname = 'espaco-da-tecnologia';
     const disqusConfig = {
       url: `https://espacodatecnologia.herokuapp.com${this.props.match.url}`,
       identifier: post._id,
@@ -68,11 +69,11 @@ class Post extends Component {
     };
 
     return (
-      <div id="post">
+      <div id='post'>
         <Header />
 
         <main>
-          <article className="post-content">
+          <article className='post-content'>
             {this.state.post && (
               <>
                 <h1>{title}</h1>
@@ -80,7 +81,7 @@ class Post extends Component {
                   Postado por <span>{author}</span>, em {dateFormated}
                 </h2>
 
-                <div className="post-content-main-image">
+                <div className='post-content-main-image'>
                   <img src={ReactLogo} alt={title} />
                 </div>
 
@@ -102,5 +103,13 @@ class Post extends Component {
     );
   }
 }
+
+Post.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      postId: PropTypes.string
+    })
+  }).isRequired
+};
 
 export default Post;

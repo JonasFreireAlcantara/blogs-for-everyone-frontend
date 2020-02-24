@@ -1,0 +1,57 @@
+#write {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#write > main {
+  /* background-color: darkturquoise; */
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 50px 2.5% 50px;
+}
+
+#write-form {
+  /* background-color: blueviolet; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#write-form > h1 {
+  /* background-color: aqua; */
+  display: block;
+  color: var(--main-green-color);
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.write-form-row {
+  /* background-color: darkkhaki; */
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.write-form-label {
+  /* background-color: darkmagenta; */
+  width: 60px;
+  font-size: 16px;
+  color: var(--main-green-color);
+}
+
+.write-form-input {
+  /* background-color: darkorange; */
+  width: 60%;
+  height: 20px;
+  color: var(--main-green-color);
+  border: 1px solid var(--main-green-color);
+  border-radius: 2px;
+}
