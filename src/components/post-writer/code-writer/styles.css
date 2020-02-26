@@ -12,6 +12,7 @@
 .code-writer-code {
   display: block;
   width: 90%;
+  overflow: hidden;
   height: fit-content;
   margin: 30px 0px 30px 50%;
   transform: translateX(-50%);
