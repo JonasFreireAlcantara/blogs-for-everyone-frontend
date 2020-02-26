@@ -14,7 +14,10 @@ import ImageCenterPicker from '../../components/post-writer/image-center-picker'
 class PostWriter extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      components: [],
+      componentsCounter: 0
+    };
 
     global.document.title = 'Espaço da Tecnologia';
 
@@ -27,19 +30,29 @@ class PostWriter extends Component {
     console.log('componentDidMount');
   }
 
-  addParagraphWriter() {
-    console.log('addParagraphWriter');
+  addNewComponent(type) {
+    const { components, componentsCounter } = this.state;
+    components.push({ id: componentsCounter, type });
+    this.setState({ components, componentsCounter: componentsCounter + 1 });
   }
 
-  addCodeWriter() {
-    console.log('addCodeWriter');
-  }
-
-  addImageCenterPicker() {
-    console.log('addImageCenterPicker');
+  static renderComponent(key, componentType) {
+    return {
+      paragraphWriter: (
+        <ParagraphWriter className='write-form-element' key={key} />
+      ),
+      codeWriter: <CodeWriter className='write-form-element' key={key} />,
+      imageCenterPicker: (
+        <ImageCenterPicker className='write-form-element' key={key} />
+      )
+    }[componentType];
   }
 
   render() {
+    const { components } = this.state;
+
+    console.log(components);
+
     return (
       <div id='write'>
         <Header />
@@ -58,15 +71,15 @@ class PostWriter extends Component {
               <input className='write-form-input' type='text' />
             </div>
 
-            <ParagraphWriter className='write-form-element' />
-            <CodeWriter className='write-form-element' />
-            <ImageCenterPicker className='write-form-element' />
+            {components.map((component, index) =>
+              PostWriter.renderComponent(index, component.type)
+            )}
 
             <div className='write-form-add'>
               <h6 className='write-form-add-title'>Adicionar</h6>
               <button
                 className='write-form-add-item'
-                onClick={this.addParagraphWriter}
+                onClick={() => this.addNewComponent('paragraphWriter')}
                 type='button'
               >
                 Parágrafo
@@ -74,7 +87,7 @@ class PostWriter extends Component {
               <hr />
               <button
                 className='write-form-add-item'
-                onClick={this.addCodeWriter}
+                onClick={() => this.addNewComponent('codeWriter')}
                 type='button'
               >
                 Bloco de código
@@ -82,7 +95,7 @@ class PostWriter extends Component {
               <hr />
               <button
                 className='write-form-add-item'
-                onClick={this.addImageCenterPicker}
+                onClick={() => this.addNewComponent('imageCenterPicker')}
                 type='button'
               >
                 Imagem central
