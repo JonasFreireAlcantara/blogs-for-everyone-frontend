@@ -10,10 +10,6 @@ class CodeWriter extends Component {
       editionMode: true,
       code: ''
     };
-
-    this.handleCodeChange = this.handleCodeChange.bind(this);
-    this.saveCode = this.saveCode.bind(this);
-    this.editCode = this.editCode.bind(this);
   }
 
   saveCode() {
@@ -41,7 +37,7 @@ class CodeWriter extends Component {
         {editionMode && (
           <textarea
             className='code-writer-textarea'
-            onChange={this.handleCodeChange}
+            onChange={event => this.handleCodeChange(event)}
             value={code}
           />
         )}
@@ -52,7 +48,7 @@ class CodeWriter extends Component {
             <button
               className='buttons-save'
               type='button'
-              onClick={this.saveCode}
+              onClick={() => this.saveCode()}
             >
               Salvar
             </button>
@@ -63,7 +59,7 @@ class CodeWriter extends Component {
             <button
               className='buttons-edit'
               type='button'
-              onClick={this.editCode}
+              onClick={() => this.editCode()}
             >
               Editar
             </button>

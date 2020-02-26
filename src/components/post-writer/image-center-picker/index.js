@@ -11,8 +11,6 @@ class ImageCenterPicker extends Component {
     this.state = {
       image: null
     };
-
-    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   handleImageChange(event) {
@@ -30,7 +28,7 @@ class ImageCenterPicker extends Component {
           <input
             type='file'
             accept='image/*'
-            onChange={this.handleImageChange}
+            onChange={event => this.handleImageChange(event)}
           />
         </label>
 

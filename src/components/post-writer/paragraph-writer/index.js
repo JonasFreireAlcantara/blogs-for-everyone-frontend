@@ -10,10 +10,6 @@ class ParagraphWriter extends Component {
       editionMode: true,
       paragraph: ''
     };
-
-    this.handleParagraphChange = this.handleParagraphChange.bind(this);
-    this.saveParagraph = this.saveParagraph.bind(this);
-    this.editParagraph = this.editParagraph.bind(this);
   }
 
   saveParagraph() {
@@ -34,14 +30,14 @@ class ParagraphWriter extends Component {
 
   render() {
     const { paragraph, editionMode } = this.state;
-    const { className } = this.props;
+    const { className, deleteFunction } = this.props;
 
     return (
       <div className={`paragraph-writer ${className}`}>
         {editionMode && (
           <textarea
             className='paragraph-writer-textarea'
-            onChange={this.handleParagraphChange}
+            onChange={event => this.handleParagraphChange(event)}
             value={paragraph}
           />
         )}
@@ -51,10 +47,19 @@ class ParagraphWriter extends Component {
 
         {editionMode && (
           <div className='buttons-row'>
+            {deleteFunction && (
+              <button
+                className='buttons-save'
+                type='button'
+                onClick={deleteFunction}
+              >
+                Excluir
+              </button>
+            )}
             <button
               className='buttons-save'
               type='button'
-              onClick={this.saveParagraph}
+              onClick={() => this.saveParagraph()}
             >
               Salvar
             </button>
@@ -65,7 +70,7 @@ class ParagraphWriter extends Component {
             <button
               className='buttons-edit'
               type='button'
-              onClick={this.editParagraph}
+              onClick={() => this.editParagraph()}
             >
               Editar
             </button>
@@ -77,11 +82,13 @@ class ParagraphWriter extends Component {
 }
 
 ParagraphWriter.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  deleteFunction: PropTypes.func
 };
 
 ParagraphWriter.defaultProps = {
-  className: ''
+  className: '',
+  deleteFunction: undefined
 };
 
 export default ParagraphWriter;

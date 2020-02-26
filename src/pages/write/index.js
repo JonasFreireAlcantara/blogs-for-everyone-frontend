@@ -36,22 +36,34 @@ class PostWriter extends Component {
     this.setState({ components, componentsCounter: componentsCounter + 1 });
   }
 
-  static renderComponent(key, componentType) {
+  static renderComponent(key, componentType, deleteFunction) {
     return {
       paragraphWriter: (
-        <ParagraphWriter className='write-form-element' key={key} />
+        <ParagraphWriter
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          key={key}
+        />
       ),
-      codeWriter: <CodeWriter className='write-form-element' key={key} />,
+      codeWriter: (
+        <CodeWriter
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          key={key}
+        />
+      ),
       imageCenterPicker: (
-        <ImageCenterPicker className='write-form-element' key={key} />
+        <ImageCenterPicker
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          key={key}
+        />
       )
     }[componentType];
   }
 
   render() {
     const { components } = this.state;
-
-    console.log(components);
 
     return (
       <div id='write'>
@@ -72,7 +84,9 @@ class PostWriter extends Component {
             </div>
 
             {components.map((component, index) =>
-              PostWriter.renderComponent(index, component.type)
+              PostWriter.renderComponent(index, component.type, () => {
+                console.log('excluir');
+              })
             )}
 
             <div className='write-form-add'>

@@ -8,6 +8,10 @@
   box-shadow: 0px 0px 5px var(--main-green-color-opacity-thirty-percent);
 }
 
+.paragraph-writer button {
+  margin-left: 10px;
+}
+
 .paragraph-writer-paragraph {
   /* background-color: thistle; */
   width: 95%;
