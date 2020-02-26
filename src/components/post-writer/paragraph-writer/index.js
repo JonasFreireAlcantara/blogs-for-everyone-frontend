@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import './styles.css';
 
 class ParagraphWriter extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { componentId } = props;
     this.state = {
       editionMode: true,
-      paragraph: ''
+      paragraph: '',
+      componentId
     };
   }
 
@@ -29,7 +31,7 @@ class ParagraphWriter extends Component {
   }
 
   render() {
-    const { paragraph, editionMode } = this.state;
+    const { paragraph, editionMode, componentId } = this.state;
     const { className, deleteFunction } = this.props;
 
     return (
@@ -51,7 +53,7 @@ class ParagraphWriter extends Component {
               <button
                 className='buttons-save'
                 type='button'
-                onClick={deleteFunction}
+                onClick={() => deleteFunction(componentId)}
               >
                 Excluir
               </button>
@@ -67,6 +69,15 @@ class ParagraphWriter extends Component {
         )}
         {!editionMode && (
           <div className='buttons-row'>
+            {deleteFunction && (
+              <button
+                className='buttons-save'
+                type='button'
+                onClick={() => deleteFunction(componentId)}
+              >
+                Excluir
+              </button>
+            )}
             <button
               className='buttons-edit'
               type='button'
@@ -83,7 +94,8 @@ class ParagraphWriter extends Component {
 
 ParagraphWriter.propTypes = {
   className: PropTypes.string,
-  deleteFunction: PropTypes.func
+  deleteFunction: PropTypes.func,
+  componentId: PropTypes.number.isRequired
 };
 
 ParagraphWriter.defaultProps = {

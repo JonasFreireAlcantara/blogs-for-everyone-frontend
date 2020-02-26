@@ -24,39 +24,57 @@ class PostWriter extends Component {
     // this.addParagraphWriter = this.addParagraphWriter.bind(this);
     // this.addCodeWriter = this.addCodeWriter.bind(this);
     // this.addImageCenterPicker = this.addImageCenterPicker.bind(this);
+    this.removeComponent = this.removeComponent.bind(this);
   }
 
   async componentDidMount() {
     console.log('componentDidMount');
   }
 
-  addNewComponent(type) {
+  addNewComponent(componentType) {
     const { components, componentsCounter } = this.state;
-    components.push({ id: componentsCounter, type });
+
+    const component = PostWriter.renderComponent(
+      componentsCounter,
+      componentType,
+      this.removeComponent
+    );
+
+    components.push({ id: componentsCounter, type: componentType, component });
     this.setState({ components, componentsCounter: componentsCounter + 1 });
   }
 
-  static renderComponent(key, componentType, deleteFunction) {
+  removeComponent(componentId) {
+    let { components } = this.state;
+
+    components = components.filter(component => component.id !== componentId);
+    this.setState({ components });
+  }
+
+  static renderComponent(index, componentType, deleteFunction) {
     return {
       paragraphWriter: (
         <ParagraphWriter
           className='write-form-element'
           deleteFunction={deleteFunction}
-          key={key}
+          key={index}
+          componentId={index}
         />
       ),
       codeWriter: (
         <CodeWriter
           className='write-form-element'
           deleteFunction={deleteFunction}
-          key={key}
+          key={index}
+          componentId={index}
         />
       ),
       imageCenterPicker: (
         <ImageCenterPicker
           className='write-form-element'
           deleteFunction={deleteFunction}
-          key={key}
+          key={index}
+          componentId={index}
         />
       )
     }[componentType];
@@ -83,11 +101,7 @@ class PostWriter extends Component {
               <input className='write-form-input' type='text' />
             </div>
 
-            {components.map((component, index) =>
-              PostWriter.renderComponent(index, component.type, () => {
-                console.log('excluir');
-              })
-            )}
+            {components.map(component => component.component)}
 
             <div className='write-form-add'>
               <h6 className='write-form-add-title'>Adicionar</h6>

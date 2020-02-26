@@ -6,10 +6,12 @@ import '../../styles/styles.css';
 import './styles.css';
 
 class ImageCenterPicker extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { componentId } = props;
     this.state = {
-      image: null
+      image: null,
+      componentId
     };
   }
 
@@ -18,8 +20,8 @@ class ImageCenterPicker extends Component {
   }
 
   render() {
-    const { image } = this.state;
-    const { className } = this.props;
+    const { image, componentId } = this.state;
+    const { className, deleteFunction } = this.props;
 
     return (
       <div className={`image-center-picker ${className}`}>
@@ -39,17 +41,32 @@ class ImageCenterPicker extends Component {
             alt='Preview'
           />
         )}
+
+        <div className='buttons-row'>
+          {deleteFunction && (
+            <button
+              className='buttons-save'
+              type='button'
+              onClick={() => deleteFunction(componentId)}
+            >
+              Excluir
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 }
 
 ImageCenterPicker.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  deleteFunction: PropTypes.func,
+  componentId: PropTypes.number.isRequired
 };
 
 ImageCenterPicker.defaultProps = {
-  className: ''
+  className: '',
+  deleteFunction: undefined
 };
 
 export default ImageCenterPicker;

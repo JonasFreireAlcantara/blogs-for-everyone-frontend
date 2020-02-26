@@ -9,6 +9,10 @@
   box-shadow: 0px 0px 5px var(--main-green-color-opacity-thirty-percent);
 }
 
+.code-writer button {
+  margin-left: 10px;
+}
+
 .code-writer-code {
   display: block;
   width: 90%;

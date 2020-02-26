@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import './styles.css';
 
 class CodeWriter extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { componentId } = props;
     this.state = {
       editionMode: true,
-      code: ''
+      code: '',
+      componentId
     };
   }
 
@@ -29,8 +31,8 @@ class CodeWriter extends Component {
   }
 
   render() {
-    const { code, editionMode } = this.state;
-    const { className } = this.props;
+    const { code, editionMode, componentId } = this.state;
+    const { className, deleteFunction } = this.props;
 
     return (
       <div className={`code-writer ${className}`}>
@@ -45,6 +47,15 @@ class CodeWriter extends Component {
 
         {editionMode && (
           <div className='code-writer-buttons-row'>
+            {deleteFunction && (
+              <button
+                className='buttons-save'
+                type='button'
+                onClick={() => deleteFunction(componentId)}
+              >
+                Excluir
+              </button>
+            )}
             <button
               className='buttons-save'
               type='button'
@@ -56,6 +67,15 @@ class CodeWriter extends Component {
         )}
         {!editionMode && (
           <div className='buttons-row'>
+            {deleteFunction && (
+              <button
+                className='buttons-save'
+                type='button'
+                onClick={() => deleteFunction(componentId)}
+              >
+                Excluir
+              </button>
+            )}
             <button
               className='buttons-edit'
               type='button'
@@ -71,11 +91,14 @@ class CodeWriter extends Component {
 }
 
 CodeWriter.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  componentId: PropTypes.number.isRequired,
+  deleteFunction: PropTypes.func
 };
 
 CodeWriter.defaultProps = {
-  className: ''
+  className: '',
+  deleteFunction: undefined
 };
 
 export default CodeWriter;
