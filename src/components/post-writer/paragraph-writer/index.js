@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
@@ -33,9 +34,10 @@ class ParagraphWriter extends Component {
 
   render() {
     const { paragraph, editionMode } = this.state;
+    const { className } = this.props;
 
     return (
-      <div className='paragraph-writer'>
+      <div className={`paragraph-writer ${className}`}>
         {editionMode && (
           <textarea
             className='paragraph-writer-textarea'
@@ -73,5 +75,13 @@ class ParagraphWriter extends Component {
     );
   }
 }
+
+ParagraphWriter.propTypes = {
+  className: PropTypes.string
+};
+
+ParagraphWriter.defaultProps = {
+  className: ''
+};
 
 export default ParagraphWriter;

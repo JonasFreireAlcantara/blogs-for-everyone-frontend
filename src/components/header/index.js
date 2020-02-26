@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-import "./styles.css";
+import './styles.css';
 
-import BlogLogo from "../../assets/espaco-da-tecnologia-logo.jpg";
+import BlogLogo from '../../assets/espaco-da-tecnologia-logo.jpg';
 
-import AccordionMenu from "../accordion-menu";
+import AccordionMenuLinks from '../accordion-menu-links';
 
 // const links = [
 //   {
@@ -34,7 +34,7 @@ class Header extends Component {
   }
 
   async componentDidMount() {
-    const categories = await (await api.get("/categories")).data;
+    const categories = await (await api.get('/categories')).data;
 
     let links = [];
 
@@ -53,33 +53,33 @@ class Header extends Component {
 
     return (
       <header>
-        <div className="header-content">
+        <div className='header-content'>
           <img
-            className="blog-logo"
-            alt="Espaço da Tecnologia"
+            className='blog-logo'
+            alt='Espaço da Tecnologia'
             src={BlogLogo}
           />
 
-          <div className="blog-title">
-            <strong className="title">Espaço da Tecnologia</strong>
-            <strong className="subtitle">10110001 11010110</strong>
+          <div className='blog-title'>
+            <strong className='title'>Espaço da Tecnologia</strong>
+            <strong className='subtitle'>10110001 11010110</strong>
 
             <nav>
-              <AccordionMenu
-                className="header-navigation-button"
-                title="Home"
-                url="/"
-              ></AccordionMenu>
-              <AccordionMenu
-                className="header-navigation-button"
-                title="Sobre"
-                url="/about"
-              ></AccordionMenu>
-              <AccordionMenu
-                className="header-navigation-button"
-                title="Categorias"
+              <AccordionMenuLinks
+                className='header-navigation-button'
+                title='Home'
+                url='/'
+              />
+              <AccordionMenuLinks
+                className='header-navigation-button'
+                title='Sobre'
+                url='/about'
+              />
+              <AccordionMenuLinks
+                className='header-navigation-button'
+                title='Categorias'
                 links={links}
-              ></AccordionMenu>
+              />
             </nav>
           </div>
         </div>

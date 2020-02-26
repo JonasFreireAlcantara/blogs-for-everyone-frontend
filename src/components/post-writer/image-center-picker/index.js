@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import '../../styles/styles.css';
 import './styles.css';
@@ -20,9 +21,10 @@ class ImageCenterPicker extends Component {
 
   render() {
     const { image } = this.state;
+    const { className } = this.props;
 
     return (
-      <div className='image-center-picker'>
+      <div className={`image-center-picker ${className}`}>
         <label className='buttons-save image-center-picker-buttons-select'>
           Selecionar Imagem
           <input
@@ -43,5 +45,13 @@ class ImageCenterPicker extends Component {
     );
   }
 }
+
+ImageCenterPicker.propTypes = {
+  className: PropTypes.string
+};
+
+ImageCenterPicker.defaultProps = {
+  className: ''
+};
 
 export default ImageCenterPicker;

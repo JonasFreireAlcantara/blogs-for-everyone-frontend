@@ -1,12 +1,12 @@
-.accordion-menu-wrapper {
+.accordion-menu-links-wrapper {
   /* background-color: aquamarine; */
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   height: 20px;
   width: 50px;
   cursor: pointer;
 }
 
-.accordion-menu-list {
+.accordion-menu-links-list {
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -15,7 +15,7 @@
   transition: transform 0.2s ease-out;
 }
 
-.accordion-menu-wrapper:hover .accordion-menu-list {
+.accordion-menu-links-wrapper:hover .accordion-menu-links-list {
   /* background-color: burlywood; */
   /* margin-top: 10px; */
   transform: scaleY(1);
@@ -25,15 +25,14 @@
   width: fit-content;
 }
 
-.accordion-menu-wrapper hr {
+.accordion-menu-links-wrapper hr {
   width: 100%;
   border: 0;
   border-bottom: 1px solid var(--main-separator-lines-color);
   box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
   margin: 5px 0px 5px 0px;
-  
 }
-.accordion-menu-element {
+.accordion-menu-links-element {
   /* background-color: coral; */
   text-decoration: none;
   color: var(--main-green-color);
@@ -45,11 +44,11 @@
   width: 70px;
 }
 
-.accordion-menu-list > div {
+.accordion-menu-links-list > div {
   margin-top: 10px;
 }
 
-.accordion-menu-element:hover {
+.accordion-menu-links-element:hover {
   background-color: var(--main-green-color);
   color: white;
 }

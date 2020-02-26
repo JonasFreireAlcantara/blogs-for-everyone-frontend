@@ -17,10 +17,26 @@ class PostWriter extends Component {
     this.state = {};
 
     global.document.title = 'Espaço da Tecnologia';
+
+    // this.addParagraphWriter = this.addParagraphWriter.bind(this);
+    // this.addCodeWriter = this.addCodeWriter.bind(this);
+    // this.addImageCenterPicker = this.addImageCenterPicker.bind(this);
   }
 
   async componentDidMount() {
     console.log('componentDidMount');
+  }
+
+  addParagraphWriter() {
+    console.log('addParagraphWriter');
+  }
+
+  addCodeWriter() {
+    console.log('addCodeWriter');
+  }
+
+  addImageCenterPicker() {
+    console.log('addImageCenterPicker');
   }
 
   render() {
@@ -42,9 +58,36 @@ class PostWriter extends Component {
               <input className='write-form-input' type='text' />
             </div>
 
-            <ParagraphWriter />
-            <CodeWriter />
-            <ImageCenterPicker />
+            <ParagraphWriter className='write-form-element' />
+            <CodeWriter className='write-form-element' />
+            <ImageCenterPicker className='write-form-element' />
+
+            <div className='write-form-add'>
+              <h6 className='write-form-add-title'>Adicionar</h6>
+              <button
+                className='write-form-add-item'
+                onClick={this.addParagraphWriter}
+                type='button'
+              >
+                Parágrafo
+              </button>
+              <hr />
+              <button
+                className='write-form-add-item'
+                onClick={this.addCodeWriter}
+                type='button'
+              >
+                Bloco de código
+              </button>
+              <hr />
+              <button
+                className='write-form-add-item'
+                onClick={this.addImageCenterPicker}
+                type='button'
+              >
+                Imagem central
+              </button>
+            </div>
           </section>
         </main>
 

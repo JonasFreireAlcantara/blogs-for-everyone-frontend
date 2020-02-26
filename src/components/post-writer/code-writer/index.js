@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
@@ -33,9 +34,10 @@ class CodeWriter extends Component {
 
   render() {
     const { code, editionMode } = this.state;
+    const { className } = this.props;
 
     return (
-      <div className='code-writer'>
+      <div className={`code-writer ${className}`}>
         {editionMode && (
           <textarea
             className='code-writer-textarea'
@@ -71,5 +73,13 @@ class CodeWriter extends Component {
     );
   }
 }
+
+CodeWriter.propTypes = {
+  className: PropTypes.string
+};
+
+CodeWriter.defaultProps = {
+  className: ''
+};
 
 export default CodeWriter;
