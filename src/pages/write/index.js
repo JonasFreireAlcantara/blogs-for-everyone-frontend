@@ -21,14 +21,10 @@ class PostWriter extends Component {
 
     global.document.title = 'Espaço da Tecnologia';
 
-    // this.addParagraphWriter = this.addParagraphWriter.bind(this);
-    // this.addCodeWriter = this.addCodeWriter.bind(this);
-    // this.addImageCenterPicker = this.addImageCenterPicker.bind(this);
     this.removeComponent = this.removeComponent.bind(this);
-  }
-
-  async componentDidMount() {
-    console.log('componentDidMount');
+    this.handleComponentContentChange = this.handleComponentContentChange.bind(
+      this
+    );
   }
 
   addNewComponent(componentType) {
@@ -37,7 +33,8 @@ class PostWriter extends Component {
     const component = PostWriter.renderComponent(
       componentsCounter,
       componentType,
-      this.removeComponent
+      this.removeComponent,
+      this.handleComponentContentChange
     );
 
     components.push({ id: componentsCounter, type: componentType, component });
@@ -51,12 +48,32 @@ class PostWriter extends Component {
     this.setState({ components });
   }
 
-  static renderComponent(index, componentType, deleteFunction) {
+  handleComponentContentChange(componentId, content) {
+    let { components } = this.state;
+
+    components = components.map(component => {
+      const aux = component;
+      if (aux.id === componentId) {
+        aux.content = content;
+      }
+      return aux;
+    });
+
+    this.setState({ components });
+  }
+
+  static renderComponent(
+    index,
+    componentType,
+    deleteFunction,
+    contentFunction
+  ) {
     return {
       paragraphWriter: (
         <ParagraphWriter
           className='write-form-element'
           deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
           key={index}
           componentId={index}
         />
@@ -65,6 +82,7 @@ class PostWriter extends Component {
         <CodeWriter
           className='write-form-element'
           deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
           key={index}
           componentId={index}
         />
@@ -73,11 +91,18 @@ class PostWriter extends Component {
         <ImageCenterPicker
           className='write-form-element'
           deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
           key={index}
           componentId={index}
         />
       )
     }[componentType];
+  }
+
+  savePost() {
+    console.log(this.state);
+
+    const { title, author, category, components } = this.state;
   }
 
   render() {
@@ -93,12 +118,38 @@ class PostWriter extends Component {
 
             <div className='write-form-row'>
               <label className='write-form-label'>Título</label>
-              <input className='write-form-input' type='text' />
+              <input
+                className='write-form-input'
+                id='write-form-id-title'
+                type='text'
+                onChange={event => {
+                  this.setState({ title: event.target.value });
+                }}
+              />
             </div>
 
             <div className='write-form-row'>
               <label className='write-form-label'>Autor</label>
-              <input className='write-form-input' type='text' />
+              <input
+                className='write-form-input'
+                id='write-form-id-title'
+                type='text'
+                onChange={event => {
+                  this.setState({ author: event.target.value });
+                }}
+              />
+            </div>
+
+            <div className='write-form-row'>
+              <label className='write-form-label'>Categoria</label>
+              <input
+                className='write-form-input'
+                id='write-form-id-title'
+                type='text'
+                onChange={event => {
+                  this.setState({ category: event.target.value });
+                }}
+              />
             </div>
 
             {components.map(component => component.component)}
@@ -129,6 +180,14 @@ class PostWriter extends Component {
                 Imagem central
               </button>
             </div>
+
+            <button
+              type='button'
+              className='write-form-final-save-button buttons-center'
+              onClick={() => this.savePost()}
+            >
+              Criar Post
+            </button>
           </section>
         </main>
 

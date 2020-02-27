@@ -14,11 +14,12 @@ class CodeWriter extends Component {
     };
   }
 
-  saveCode() {
-    const { code } = this.state;
+  saveCode(contentFunction) {
+    const { code, componentId } = this.state;
 
     if (code.length !== 0) {
       this.setState({ editionMode: false });
+      contentFunction(componentId, code);
     }
   }
 
@@ -32,7 +33,7 @@ class CodeWriter extends Component {
 
   render() {
     const { code, editionMode, componentId } = this.state;
-    const { className, deleteFunction } = this.props;
+    const { className, deleteFunction, contentFunction } = this.props;
 
     return (
       <div className={`code-writer ${className}`}>
@@ -59,7 +60,7 @@ class CodeWriter extends Component {
             <button
               className='buttons-save'
               type='button'
-              onClick={() => this.saveCode()}
+              onClick={() => this.saveCode(contentFunction)}
             >
               Salvar
             </button>
@@ -93,12 +94,14 @@ class CodeWriter extends Component {
 CodeWriter.propTypes = {
   className: PropTypes.string,
   componentId: PropTypes.number.isRequired,
-  deleteFunction: PropTypes.func
+  deleteFunction: PropTypes.func,
+  contentFunction: PropTypes.func
 };
 
 CodeWriter.defaultProps = {
   className: '',
-  deleteFunction: undefined
+  deleteFunction: undefined,
+  contentFunction: undefined
 };
 
 export default CodeWriter;

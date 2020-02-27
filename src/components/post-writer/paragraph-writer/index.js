@@ -14,11 +14,12 @@ class ParagraphWriter extends Component {
     };
   }
 
-  saveParagraph() {
-    const { paragraph } = this.state;
+  saveParagraph(contentFunction) {
+    const { paragraph, componentId } = this.state;
 
     if (paragraph.length !== 0) {
       this.setState({ editionMode: false });
+      contentFunction(componentId, paragraph);
     }
   }
 
@@ -32,7 +33,7 @@ class ParagraphWriter extends Component {
 
   render() {
     const { paragraph, editionMode, componentId } = this.state;
-    const { className, deleteFunction } = this.props;
+    const { className, deleteFunction, contentFunction } = this.props;
 
     return (
       <div className={`paragraph-writer ${className}`}>
@@ -61,7 +62,7 @@ class ParagraphWriter extends Component {
             <button
               className='buttons-save'
               type='button'
-              onClick={() => this.saveParagraph()}
+              onClick={() => this.saveParagraph(contentFunction)}
             >
               Salvar
             </button>
@@ -95,6 +96,7 @@ class ParagraphWriter extends Component {
 ParagraphWriter.propTypes = {
   className: PropTypes.string,
   deleteFunction: PropTypes.func,
+  contentFunction: PropTypes.func.isRequired,
   componentId: PropTypes.number.isRequired
 };
 

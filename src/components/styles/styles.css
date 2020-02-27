@@ -18,3 +18,19 @@
   cursor: pointer;
   font-size: 15px;
 }
+
+.buttons-big {
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--main-green-color);
+  width: 300px;
+  height: 35px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.buttons-center {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

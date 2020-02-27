@@ -15,13 +15,16 @@ class ImageCenterPicker extends Component {
     };
   }
 
-  handleImageChange(event) {
+  handleImageChange(event, contentFunction) {
     this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+
+    const { componentId } = this.state;
+    contentFunction(componentId, URL.createObjectURL(event.target.files[0]));
   }
 
   render() {
     const { image, componentId } = this.state;
-    const { className, deleteFunction } = this.props;
+    const { className, deleteFunction, contentFunction } = this.props;
 
     return (
       <div className={`image-center-picker ${className}`}>
@@ -30,7 +33,7 @@ class ImageCenterPicker extends Component {
           <input
             type='file'
             accept='image/*'
-            onChange={event => this.handleImageChange(event)}
+            onChange={event => this.handleImageChange(event, contentFunction)}
           />
         </label>
 
@@ -61,12 +64,14 @@ class ImageCenterPicker extends Component {
 ImageCenterPicker.propTypes = {
   className: PropTypes.string,
   deleteFunction: PropTypes.func,
+  contentFunction: PropTypes.func,
   componentId: PropTypes.number.isRequired
 };
 
 ImageCenterPicker.defaultProps = {
   className: '',
-  deleteFunction: undefined
+  deleteFunction: undefined,
+  contentFunction: undefined
 };
 
 export default ImageCenterPicker;

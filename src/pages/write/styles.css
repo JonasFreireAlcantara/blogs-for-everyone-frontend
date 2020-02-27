@@ -44,7 +44,7 @@
 
 .write-form-label {
   /* background-color: darkmagenta; */
-  width: 60px;
+  width: 80px;
   font-size: 16px;
   color: var(--main-green-color);
 }
@@ -105,4 +105,15 @@
   border: 0;
   border-top: 1px solid var(--main-separator-lines-color);
   box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
+}
+
+.write-form-final-save-button {
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--main-green-color);
+  width: 50%;
+  height: 35px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
 }
