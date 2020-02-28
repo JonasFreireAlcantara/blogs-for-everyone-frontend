@@ -19,7 +19,7 @@ class ImageCenterPicker extends Component {
     this.setState({ image: URL.createObjectURL(event.target.files[0]) });
 
     const { componentId } = this.state;
-    contentFunction(componentId, URL.createObjectURL(event.target.files[0]));
+    contentFunction(componentId, event.target.files[0]);
   }
 
   render() {

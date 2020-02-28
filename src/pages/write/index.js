@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 
-// import api from '../../services/api';
+import api from '../../services/api';
 
 import './styles.css';
 
@@ -12,6 +12,62 @@ import CodeWriter from '../../components/post-writer/code-writer';
 import ImageCenterPicker from '../../components/post-writer/image-center-picker';
 
 class PostWriter extends Component {
+  static async saveImageAndGetURL(image) {
+    const formData = new FormData();
+
+    formData.append('image', image);
+
+    const result = await api.post('/image', formData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    });
+
+    return result.data.url;
+  }
+
+  static async discoverCategoryIdByCategoryUrl(categoryUrl) {
+    const result = await api.get(`/categories/${categoryUrl}`);
+    return result.data._id;
+  }
+
+  static renderComponent(
+    index,
+    componentType,
+    deleteFunction,
+    contentFunction
+  ) {
+    return {
+      paragraph: (
+        <ParagraphWriter
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
+          key={index}
+          componentId={index}
+        />
+      ),
+      code: (
+        <CodeWriter
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
+          key={index}
+          componentId={index}
+        />
+      ),
+      imageCenter: (
+        <ImageCenterPicker
+          className='write-form-element'
+          deleteFunction={deleteFunction}
+          contentFunction={contentFunction}
+          key={index}
+          componentId={index}
+        />
+      )
+    }[componentType];
+  }
+
   constructor() {
     super();
     this.state = {
@@ -62,47 +118,40 @@ class PostWriter extends Component {
     this.setState({ components });
   }
 
-  static renderComponent(
-    index,
-    componentType,
-    deleteFunction,
-    contentFunction
-  ) {
-    return {
-      paragraphWriter: (
-        <ParagraphWriter
-          className='write-form-element'
-          deleteFunction={deleteFunction}
-          contentFunction={contentFunction}
-          key={index}
-          componentId={index}
-        />
-      ),
-      codeWriter: (
-        <CodeWriter
-          className='write-form-element'
-          deleteFunction={deleteFunction}
-          contentFunction={contentFunction}
-          key={index}
-          componentId={index}
-        />
-      ),
-      imageCenterPicker: (
-        <ImageCenterPicker
-          className='write-form-element'
-          deleteFunction={deleteFunction}
-          contentFunction={contentFunction}
-          key={index}
-          componentId={index}
-        />
-      )
-    }[componentType];
-  }
-
-  savePost() {
-    console.log(this.state);
-
+  async savePost() {
     const { title, author, category, components } = this.state;
+
+    const categoryId = await PostWriter.discoverCategoryIdByCategoryUrl(
+      category
+    );
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const component of components) {
+      const { type } = component;
+
+      if (type === 'imageCenter') {
+        // eslint-disable-next-line no-await-in-loop
+        component.content = await PostWriter.saveImageAndGetURL(
+          component.content
+        );
+      }
+    }
+
+    const elements = components.map(component => ({
+      element: component.type,
+      content: component.content
+    }));
+
+    console.log(elements, categoryId);
+
+    const post = {
+      title,
+      author,
+      category: categoryId,
+      elements
+    };
+
+    console.log(post);
   }
 
   render() {
@@ -158,7 +207,7 @@ class PostWriter extends Component {
               <h6 className='write-form-add-title'>Adicionar</h6>
               <button
                 className='write-form-add-item'
-                onClick={() => this.addNewComponent('paragraphWriter')}
+                onClick={() => this.addNewComponent('paragraph')}
                 type='button'
               >
                 Parágrafo
@@ -166,7 +215,7 @@ class PostWriter extends Component {
               <hr />
               <button
                 className='write-form-add-item'
-                onClick={() => this.addNewComponent('codeWriter')}
+                onClick={() => this.addNewComponent('code')}
                 type='button'
               >
                 Bloco de código
@@ -174,7 +223,7 @@ class PostWriter extends Component {
               <hr />
               <button
                 className='write-form-add-item'
-                onClick={() => this.addNewComponent('imageCenterPicker')}
+                onClick={() => this.addNewComponent('imageCenter')}
                 type='button'
               >
                 Imagem central

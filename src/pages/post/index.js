@@ -86,7 +86,7 @@ class Post extends Component {
                 </div>
 
                 {elements.map((element, index) =>
-                  this.renderElement(element, index)
+                  Post.renderElement(element, index)
                 )}
 
                 <DiscussionEmbed
