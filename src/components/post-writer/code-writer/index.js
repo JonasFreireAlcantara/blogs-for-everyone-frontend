@@ -1,39 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import Writer from '..';
 
 import './styles.css';
 
-class CodeWriter extends Component {
-  constructor(props) {
-    super(props);
-    const { componentId } = props;
-    this.state = {
-      editionMode: true,
-      code: '',
-      componentId
-    };
-  }
-
-  saveCode(contentFunction) {
-    const { code, componentId } = this.state;
-
-    if (code.length !== 0) {
-      this.setState({ editionMode: false });
-      contentFunction(componentId, code);
-    }
-  }
-
-  editCode() {
-    this.setState({ editionMode: true });
-  }
-
+class CodeWriter extends Writer {
   handleCodeChange(event) {
-    this.setState({ code: event.target.value });
+    this.setState({ content: event.target.value });
   }
 
   render() {
-    const { code, editionMode, componentId } = this.state;
-    const { className, deleteFunction, contentFunction } = this.props;
+    const {
+      content,
+      editionMode,
+      componentId,
+      deleteFunction,
+      contentFunction
+    } = this.state;
+    const { className } = this.props;
 
     return (
       <div className={`code-writer ${className}`}>
@@ -41,10 +26,10 @@ class CodeWriter extends Component {
           <textarea
             className='code-writer-textarea'
             onChange={event => this.handleCodeChange(event)}
-            value={code}
+            value={content}
           />
         )}
-        {!editionMode && <kbd className='code-writer-code'>{code}</kbd>}
+        {!editionMode && <kbd className='code-writer-code'>{content}</kbd>}
 
         {editionMode && (
           <div className='code-writer-buttons-row'>
@@ -60,7 +45,7 @@ class CodeWriter extends Component {
             <button
               className='buttons-save'
               type='button'
-              onClick={() => this.saveCode(contentFunction)}
+              onClick={() => this.saveContent(contentFunction)}
             >
               Salvar
             </button>
@@ -80,7 +65,7 @@ class CodeWriter extends Component {
             <button
               className='buttons-edit'
               type='button'
-              onClick={() => this.editCode()}
+              onClick={() => this.editContent()}
             >
               Editar
             </button>
@@ -92,16 +77,11 @@ class CodeWriter extends Component {
 }
 
 CodeWriter.propTypes = {
-  className: PropTypes.string,
-  componentId: PropTypes.number.isRequired,
-  deleteFunction: PropTypes.func,
-  contentFunction: PropTypes.func
+  className: PropTypes.string
 };
 
 CodeWriter.defaultProps = {
-  className: '',
-  deleteFunction: undefined,
-  contentFunction: undefined
+  className: ''
 };
 
 export default CodeWriter;

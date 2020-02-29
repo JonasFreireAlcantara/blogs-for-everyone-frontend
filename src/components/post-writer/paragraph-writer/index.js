@@ -1,39 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import Writer from '..';
 
 import './styles.css';
 
-class ParagraphWriter extends Component {
-  constructor(props) {
-    super(props);
-    const { componentId } = props;
-    this.state = {
-      editionMode: true,
-      paragraph: '',
-      componentId
-    };
-  }
-
-  saveParagraph(contentFunction) {
-    const { paragraph, componentId } = this.state;
-
-    if (paragraph.length !== 0) {
-      this.setState({ editionMode: false });
-      contentFunction(componentId, paragraph);
-    }
-  }
-
-  editParagraph() {
-    this.setState({ editionMode: true });
-  }
-
+class ParagraphWriter extends Writer {
   handleParagraphChange(event) {
-    this.setState({ paragraph: event.target.value });
+    this.setState({ content: event.target.value });
   }
 
   render() {
-    const { paragraph, editionMode, componentId } = this.state;
-    const { className, deleteFunction, contentFunction } = this.props;
+    const {
+      content,
+      editionMode,
+      componentId,
+      deleteFunction,
+      contentFunction
+    } = this.state;
+    const { className } = this.props;
 
     return (
       <div className={`paragraph-writer ${className}`}>
@@ -41,11 +26,11 @@ class ParagraphWriter extends Component {
           <textarea
             className='paragraph-writer-textarea'
             onChange={event => this.handleParagraphChange(event)}
-            value={paragraph}
+            value={content}
           />
         )}
         {!editionMode && (
-          <p className='paragraph-writer-paragraph'>{paragraph}</p>
+          <p className='paragraph-writer-paragraph'>{content}</p>
         )}
 
         {editionMode && (
@@ -62,7 +47,7 @@ class ParagraphWriter extends Component {
             <button
               className='buttons-save'
               type='button'
-              onClick={() => this.saveParagraph(contentFunction)}
+              onClick={() => this.saveContent(contentFunction)}
             >
               Salvar
             </button>
@@ -82,7 +67,7 @@ class ParagraphWriter extends Component {
             <button
               className='buttons-edit'
               type='button'
-              onClick={() => this.editParagraph()}
+              onClick={() => this.editContent()}
             >
               Editar
             </button>
@@ -94,15 +79,11 @@ class ParagraphWriter extends Component {
 }
 
 ParagraphWriter.propTypes = {
-  className: PropTypes.string,
-  deleteFunction: PropTypes.func,
-  contentFunction: PropTypes.func.isRequired,
-  componentId: PropTypes.number.isRequired
+  className: PropTypes.string
 };
 
 ParagraphWriter.defaultProps = {
-  className: '',
-  deleteFunction: undefined
+  className: ''
 };
 
 export default ParagraphWriter;

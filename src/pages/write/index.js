@@ -121,6 +121,8 @@ class PostWriter extends Component {
   async savePost() {
     const { title, author, category, components } = this.state;
 
+    console.log(components);
+
     const categoryId = await PostWriter.discoverCategoryIdByCategoryUrl(
       category
     );

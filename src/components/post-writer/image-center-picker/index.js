@@ -1,30 +1,28 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import Writer from '..';
 
 import '../../styles/styles.css';
 import './styles.css';
 
-class ImageCenterPicker extends Component {
-  constructor(props) {
-    super(props);
-    const { componentId } = props;
-    this.state = {
-      image: null,
-      componentId
-    };
-  }
-
+class ImageCenterPicker extends Writer {
   handleImageChange(event, contentFunction) {
-    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+    this.setState({ content: URL.createObjectURL(event.target.files[0]) });
 
     const { componentId } = this.state;
     contentFunction(componentId, event.target.files[0]);
   }
 
   render() {
-    const { image, componentId } = this.state;
-    const { className, deleteFunction, contentFunction } = this.props;
+    const {
+      content,
+      componentId,
+      deleteFunction,
+      contentFunction
+    } = this.state;
+    const { className } = this.props;
 
     return (
       <div className={`image-center-picker ${className}`}>
@@ -37,10 +35,10 @@ class ImageCenterPicker extends Component {
           />
         </label>
 
-        {image && (
+        {content && (
           <img
             className='image-center-picker-preview'
-            src={image}
+            src={content}
             alt='Preview'
           />
         )}
@@ -62,16 +60,11 @@ class ImageCenterPicker extends Component {
 }
 
 ImageCenterPicker.propTypes = {
-  className: PropTypes.string,
-  deleteFunction: PropTypes.func,
-  contentFunction: PropTypes.func,
-  componentId: PropTypes.number.isRequired
+  className: PropTypes.string
 };
 
 ImageCenterPicker.defaultProps = {
-  className: '',
-  deleteFunction: undefined,
-  contentFunction: undefined
+  className: ''
 };
 
 export default ImageCenterPicker;
