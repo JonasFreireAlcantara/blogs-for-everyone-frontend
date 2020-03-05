@@ -17,9 +17,12 @@
 
 .post-content {
   /* background-color: cadetblue; */
-  width: 60%;
+  width: 75%;
   height: 100%;
-  margin: 40px 20% 0px;
+  margin-top: 40px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  flex-shrink: 0;
 }
 
 .post-content > h1 {

@@ -10,8 +10,6 @@ import './styles.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
-import ReactLogo from '../../assets/react-logo.png';
-
 class Post extends Component {
   constructor() {
     super();
@@ -81,9 +79,9 @@ class Post extends Component {
                   Postado por <span>{author}</span>, em {dateFormated}
                 </h2>
 
-                <div className='post-content-main-image'>
+                {/* <div className='post-content-main-image'>
                   <img src={ReactLogo} alt={title} />
-                </div>
+                </div> */}
 
                 {elements.map((element, index) =>
                   Post.renderElement(element, index)
