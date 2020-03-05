@@ -117,3 +117,11 @@
   cursor: pointer;
   font-size: 15px;
 }
+
+.write-form-post-created {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  color: var(--main-green-color);
+  font-size: 20px;
+}

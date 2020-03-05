@@ -72,7 +72,8 @@ class PostWriter extends Component {
     super();
     this.state = {
       components: [],
-      componentsCounter: 0
+      componentsCounter: 0,
+      postCreated: false
     };
 
     global.document.title = 'Espaço da Tecnologia';
@@ -121,8 +122,6 @@ class PostWriter extends Component {
   async savePost() {
     const { title, author, category, components } = this.state;
 
-    console.log(components);
-
     const categoryId = await PostWriter.discoverCategoryIdByCategoryUrl(
       category
     );
@@ -144,8 +143,6 @@ class PostWriter extends Component {
       content: component.content
     }));
 
-    console.log(elements, categoryId);
-
     const post = {
       title,
       author,
@@ -153,11 +150,14 @@ class PostWriter extends Component {
       elements
     };
 
-    console.log(post);
+    const result = (await api.post('/posts', post)).data;
+    if (result) {
+      this.setState({ postCreated: true });
+    }
   }
 
   render() {
-    const { components } = this.state;
+    const { components, postCreated } = this.state;
 
     return (
       <div id='write'>
@@ -239,6 +239,12 @@ class PostWriter extends Component {
             >
               Criar Post
             </button>
+
+            {postCreated && (
+              <strong className='write-form-post-created'>
+                Post criado com sucesso
+              </strong>
+            )}
           </section>
         </main>
 
