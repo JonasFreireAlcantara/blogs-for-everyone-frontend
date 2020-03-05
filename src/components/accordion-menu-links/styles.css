@@ -22,7 +22,6 @@
   transform-origin: top;
   display: flex;
   flex-direction: column;
-  width: fit-content;
 }
 
 .accordion-menu-links-wrapper hr {
@@ -42,6 +41,7 @@
   transition: background-color 0.5s linear;
   padding: 4px;
   width: 70px;
+  display: block;
 }
 
 .accordion-menu-links-list > div {
