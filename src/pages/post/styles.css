@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-width: 1000px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #post > main {
@@ -17,9 +17,9 @@
 
 .post-content {
   /* background-color: cadetblue; */
-  width: 95%;
+  width: 60%;
   height: 100%;
-  margin: 40px 2.5% 0px;
+  margin: 40px 20% 0px;
 }
 
 .post-content > h1 {
