@@ -15,15 +15,17 @@
 }
 
 #home > main > aside {
-  margin: 50px 2.5% 50px;
-  width: 25%;
+  /* background-color: tomato; */
+  margin: 50px 0px;
+  padding: 0 2.5%;
+  width: 200px;
 }
 
-#home > main > #home-posts-preview {
+#home-posts-preview {
   /* background-color: darkseagreen; */
-  margin: 50px 5% 50px;
-  width: 60%;
-  /* max-width: 1000px; */
+  margin: 50px 0px;
+  flex: 1;
+  padding: 0px 5%;
 }
 
 .home-posts-preview-horizontal-line {
@@ -33,6 +35,6 @@
   box-shadow: 0px 0px 1px var(--main-green-color-opacity-thirty-percent);
 }
 
-#home > main > #home-posts-preview > div:last-child > hr {
+#home-posts-preview > div:last-child > hr {
   display: none;
 }

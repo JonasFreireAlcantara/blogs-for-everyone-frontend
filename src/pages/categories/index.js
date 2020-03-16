@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-import "./styles.css";
+import './styles.css';
 
-import Header from "../../components/header";
-import LastPosts from "../../components/last-posts";
-import PostPreview from "../../components/post-preview";
-import Footer from "../../components/footer";
+import Header from '../../components/header';
+import LastPosts from '../../components/last-posts';
+import PostPreview from '../../components/post-preview';
+import Footer from '../../components/footer';
 
 class Categories extends Component {
   constructor() {
@@ -44,25 +44,27 @@ class Categories extends Component {
 
   render() {
     const posts = this.state.posts || [];
-    const category = this.state.category || { name: "" };
+    const category = this.state.category || { name: '' };
 
     document.title = category.name;
 
     return (
-      <div id="categories">
+      <div id='categories'>
         <Header />
 
         <main>
           <LastPosts />
 
-          <section id="category-posts-preview">
-            <strong>{category.name}</strong>
-            {posts.map(post => (
-              <div key={post._id}>
-                <PostPreview post={post} />
-                <hr className="home-posts-preview-horizontal-line" />
-              </div>
-            ))}
+          <section id='category-posts-preview'>
+            <div>
+              <strong>{category.name}</strong>
+              {posts.map(post => (
+                <div key={post._id}>
+                  <PostPreview post={post} />
+                  <hr className='home-posts-preview-horizontal-line' />
+                </div>
+              ))}
+            </div>
           </section>
         </main>
 

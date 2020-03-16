@@ -34,12 +34,14 @@ class Home extends Component {
           <LastPosts />
 
           <section id='home-posts-preview'>
-            {posts.map(post => (
-              <div key={post._id}>
-                <PostPreview post={post} />
-                <hr className='home-posts-preview-horizontal-line' />
-              </div>
-            ))}
+            <div>
+              {posts.map(post => (
+                <div key={post._id}>
+                  <PostPreview post={post} />
+                  <hr className='home-posts-preview-horizontal-line' />
+                </div>
+              ))}
+            </div>
           </section>
         </main>
 
