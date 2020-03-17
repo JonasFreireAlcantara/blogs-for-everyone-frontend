@@ -38,8 +38,6 @@ class LastPosts extends Component {
             </Link>
           ))}
         </div>
-
-        <div id='last-posts-vertical-line'></div>
       </aside>
     );
   }
