@@ -2,7 +2,7 @@
   /* background-color: aquamarine; */
   font-family: 'Ubuntu', sans-serif;
   height: 20px;
-  width: 50px;
+  width: fit-content;
   cursor: pointer;
 }
 

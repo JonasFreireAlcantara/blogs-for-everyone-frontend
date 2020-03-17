@@ -1,12 +1,24 @@
-import React from "react";
+import React from 'react';
 
-import "./styles.css";
+import BlogConfiguration from '../../config/BlogConfiguration';
+
+import './styles.css';
 
 const Footer = () => {
+  const { author } = BlogConfiguration.footer;
+
   return (
     <footer>
       <hr />
-      <strong>Copyright &copy; Jonas Freire</strong>
+      <div>
+        <p>
+          Este blog foi desenvolvido com o apoio da plataforma de blogs:{' '}
+          <a href='https://github.com/JonasFreireAlcantara/blog-frontend'>
+            Blogs for Everyone
+          </a>
+        </p>
+        <p className='strong-copyright'>Copyright &copy; {author}</p>
+      </div>
     </footer>
   );
 };

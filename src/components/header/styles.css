@@ -14,7 +14,7 @@ header .header-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 header .header-content .blog-logo {
@@ -34,18 +34,11 @@ header .header-content .blog-title {
   flex-direction: column; */
 }
 
-header .header-content .blog-title .title {
+.title {
   display: block;
+  text-decoration: none;
   font-size: 40px;
   font-weight: bold;
-  color: var(--main-green-color);
-  text-align: end;
-}
-
-header .header-content .blog-title .subtitle {
-  display: block;
-  font-size: 11px;
-  font-weight: normal;
   color: var(--main-green-color);
   text-align: end;
 }

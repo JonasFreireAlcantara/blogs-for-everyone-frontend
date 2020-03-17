@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import api from '../../services/api';
+import BlogConfiguration from '../../config/BlogConfiguration';
 
 import './styles.css';
 
@@ -14,7 +15,7 @@ class Home extends Component {
     super();
     this.state = {};
 
-    global.document.title = 'Espaço da Tecnologia';
+    global.document.title = BlogConfiguration.title;
   }
 
   async componentDidMount() {

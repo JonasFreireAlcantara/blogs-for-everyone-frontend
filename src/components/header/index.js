@@ -1,36 +1,21 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
+import BlogConfiguration from '../../config/BlogConfiguration';
 
 import './styles.css';
 
-import BlogLogo from '../../assets/espaco-da-tecnologia-logo.jpg';
-
 import AccordionMenuLinks from '../accordion-menu-links';
-
-// const links = [
-//   {
-//     title: "Docker",
-//     url: "url1"
-//   },
-//   {
-//     title: "Machine Learning",
-//     url: "url2"
-//   },
-//   {
-//     title: "Web Development",
-//     url: "url3"
-//   },
-//   {
-//     title: "Security",
-//     url: "url4"
-//   }
-// ];
 
 class Header extends Component {
   constructor() {
     super();
-    this.state = {};
+    const { title, logo } = BlogConfiguration.header;
+    this.state = {
+      title,
+      logo
+    };
   }
 
   async componentDidMount() {
@@ -50,19 +35,17 @@ class Header extends Component {
 
   render() {
     const links = this.state.links || [];
+    const { title, logo } = this.state;
 
     return (
       <header>
         <div className='header-content'>
-          <img
-            className='blog-logo'
-            alt='Espaço da Tecnologia'
-            src={BlogLogo}
-          />
+          <img className='blog-logo' alt={title} src={logo} />
 
           <div className='blog-title'>
-            <strong className='title'>Espaço da Tecnologia</strong>
-            <strong className='subtitle'>10110001 11010110</strong>
+            <Link className='title' to='/'>
+              {title}
+            </Link>
 
             <nav>
               <AccordionMenuLinks

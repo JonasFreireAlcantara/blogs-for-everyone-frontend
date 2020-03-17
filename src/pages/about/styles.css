@@ -14,18 +14,18 @@
 
 #about > main > aside {
   margin: 50px 2.5% 50px;
-  width: 25%;
+  width: 200px;
 }
 
-#about > main > #about-content {
-  margin: 30px 5% 50px;
-  width: 60%;
-  max-width: 1000px;
-  font-family: "Ubuntu", sans-serif;
+#about-content {
+  margin: 30px 0px 50px;
+  flex: 1;
+  padding: 0px 10%;
+  font-family: 'Ubuntu', sans-serif;
   --margin-left: 20px;
 }
 
-#about-content > strong {
+#about-content > div > strong {
   display: block;
   font-weight: bold;
   font-size: 30px;
@@ -33,14 +33,14 @@
   margin-bottom: 50px;
 }
 
-#about-content > p {
+#about-content > div > p {
   font-size: 14px;
   text-align: justify;
   color: var(--main-green-color);
   margin-left: var(--margin-left);
 }
 
-#about-content > img {
+#about-content > div > img {
   width: 50%;
   height: auto;
   margin-top: 50px;

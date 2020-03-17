@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 import api from '../../services/api';
+import BlogConfiguration from '../../config/BlogConfiguration';
 
 import './styles.css';
 
@@ -76,7 +77,7 @@ class PostWriter extends Component {
       postCreated: false
     };
 
-    global.document.title = 'Espaço da Tecnologia';
+    global.document.title = BlogConfiguration.title;
 
     this.removeComponent = this.removeComponent.bind(this);
     this.handleComponentContentChange = this.handleComponentContentChange.bind(

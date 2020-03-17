@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import "./styles.css";
+import './styles.css';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
 const NUMBER_OF_POSTS = 4;
 
@@ -14,7 +14,7 @@ class LastPosts extends Component {
   }
 
   async componentDidMount() {
-    const posts = await api.get("/posts");
+    const posts = await api.get('/posts');
     this.setState({ posts: posts.data });
   }
 
@@ -24,13 +24,13 @@ class LastPosts extends Component {
     const firstFourLastPostsData = posts.slice(0, NUMBER_OF_POSTS);
 
     return (
-      <aside id="last-posts">
-        <div id="last-posts-contents">
+      <aside id='last-posts'>
+        <div id='last-posts-contents'>
           <strong>Últimas Postagens:</strong>
 
           {firstFourLastPostsData.map(post => (
             <Link
-              className="last-posts-links"
+              className='last-posts-links'
               key={post._id}
               to={`/post/${post._id}`}
             >
@@ -39,7 +39,7 @@ class LastPosts extends Component {
           ))}
         </div>
 
-        <div id="last-posts-vertical-line"></div>
+        <div id='last-posts-vertical-line'></div>
       </aside>
     );
   }

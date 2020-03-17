@@ -9,6 +9,7 @@ import './styles.css';
 
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import BlogConfiguration from '../../config/BlogConfiguration';
 
 class Post extends Component {
   constructor() {
@@ -18,12 +19,10 @@ class Post extends Component {
 
   async componentDidMount() {
     const { postId } = this.props.match.params;
-    // console.log(postId);
 
     const post = (await api.get(`/posts/${postId}`)).data;
-    // console.log(post);
 
-    global.document.title = post.title || 'Blog Frontend';
+    global.document.title = post.title || BlogConfiguration.title;
 
     this.setState({ post });
   }
