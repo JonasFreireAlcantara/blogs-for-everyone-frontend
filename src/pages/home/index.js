@@ -15,7 +15,9 @@ class Home extends Component {
     super();
     this.state = {};
 
-    global.document.title = BlogConfiguration.title;
+    const { pageTitle } = BlogConfiguration.defaults;
+
+    global.document.title = pageTitle;
   }
 
   async componentDidMount() {

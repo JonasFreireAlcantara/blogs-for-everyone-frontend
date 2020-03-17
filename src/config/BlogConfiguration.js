@@ -1,4 +1,8 @@
 export default {
+  defaults: {
+    pageTitle: 'Blog do Jonas'
+  },
+
   header: {
     title: 'Blog do Jonas',
     logo:

@@ -12,7 +12,7 @@ const Footer = () => {
       <hr />
       <div>
         <p>
-          Este blog foi desenvolvido com o apoio da plataforma de blogs:{' '}
+          Este blog foi desenvolvido com o apoio da plataforma:{' '}
           <a href='https://github.com/JonasFreireAlcantara/blog-frontend'>
             Blogs for Everyone
           </a>

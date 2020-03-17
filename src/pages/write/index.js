@@ -77,7 +77,9 @@ class PostWriter extends Component {
       postCreated: false
     };
 
-    global.document.title = BlogConfiguration.title;
+    const { pageTitle } = BlogConfiguration.defaults;
+
+    global.document.title = pageTitle;
 
     this.removeComponent = this.removeComponent.bind(this);
     this.handleComponentContentChange = this.handleComponentContentChange.bind(
