@@ -8,9 +8,9 @@ footer > div {
   /* background-color: burlywood; */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   color: var(--main-green-color);
   font-family: 'Ubuntu', sans-serif;
+  font-size: 11px;
   padding: 10px 5px;
 }
 
