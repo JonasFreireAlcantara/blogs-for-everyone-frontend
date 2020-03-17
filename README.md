@@ -1,68 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Blogs for Everyone
 
-## Available Scripts
+Blogs for Everyone aims to be Content Management System for personal blogs
 
-In the project directory, you can run:
+## About this project
 
-### `npm start`
+When i was developing my first blog from scratch using React, Express, Node, Mongoose technologies i had decided to create this CMS to help someone which desires to create and maintaing your own blog in an easy way.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project was designed to adapt the content for your needs but you will have to setup some configurations before.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Frontend
 
-### `npm test`
+This repository refers to the frontend part of the project which in this case is a Single Page Application built with [React](https://reactjs.org/), to you setup the backend see the readme file of [backend](https://github.com/JonasFreireAlcantara/blogs-for-everyone-backend) part of this project.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project frontend resources
 
-### `npm run build`
+The resources which this frontend utilize is:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- A [Blogs for Everyone backend](https://github.com/JonasFreireAlcantara/blogs-for-everyone-backend) running;
+- A [Disqus](https://disqus.com/) account to save the comments for each post.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Posts comments with Disqus
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Disqus is a very useful platform of community engagement for websites, blogs, etc. For you can moderate discussions and comments in your posts the Blogs for Everyone platform utilizes the amazing Disqus platform.
 
-### `npm run eject`
+You must create an account at [Disqus](https://disqus.com/), and create a new site there, you need inform the website name which will be important soon.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Credentials configurations
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After you done the previous step you have to inform the project about the credentials of the project
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+REACT_APP_BLOG_FRONTEND_DOMAIN=<your_frontend_domain>
+REACT_APP_BLOG_BACKEND_DOMAIN=<your_backend_domain>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+REACT_APP_DISQUS_SHORTNAME=<your_disqus_site_shortname>
+```
 
-## Learn More
+## Content configurations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The frontend part of the project need receives some contents informations about the blog as title, about info page, etc. To edit that's informations you must edit the src > config > BlogConfiguration.js file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Warning: All informations must be inside single or double quotes observe the example above.
 
-### Code Splitting
+```
+export default {
+  defaults: {
+    pageTitle: 'My blog'
+  },
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+  header: {
+    title: 'My blog',
+    logo:
+      'https://images.pexels.com/photos/3787320/pexels-photo-3787320.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+  },
 
-### Analyzing the Bundle Size
+  footer: {
+    author: 'Edmund Fair'
+  },
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+  about: {
+    title: 'About my blog',
+    paragraphs: [
+      'The my blog was created in 2017',
+      'Here is my second paragraph',
+      'And here my thirth paragraph'
+    ],
+    image:
+      'https://images.pexels.com/photos/813872/pexels-photo-813872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+  }
+};
+```
 
-### Making a Progressive Web App
+#### defaults
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Here you can tell to the project default information for a while the only information needed it's the pageTitle.
 
-### Advanced Configuration
+#### header
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Contains information which are localized inside the header:
 
-### Deployment
+- title - the blog title;
+- logo - url of an image to be the blog logo.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### footer
 
-### `npm run build` fails to minify
+Contains information which are localized inside the footer, actually only exists the author name, where you put the blog writer, which probably is your name ;)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### about
+
+In the Blogs for Everyone there exists a page called about where you put information about the blog itself, what you created, what is about, etc.
+
+The informations are:
+
+- title - mini title for your about blog page;
+- paragraphs - the paragraphs separated by comma;
+- image - url for some cool image, or your profile image if you want.
+
+## Execution
+
+You must install all project dependencies before you run for the first time the frontend, go to the project root directory and enter the follow command:
+
+`npm install`
+
+After that to execute this project in development mode you can run:
+
+`npm start`
+
+And for production you can run, which will generate the bundles ready for production in the directory build:
+
+`npm run build`
+
+You can now test the frontend going to the [http://localhost:3000](http://localhost:3000).

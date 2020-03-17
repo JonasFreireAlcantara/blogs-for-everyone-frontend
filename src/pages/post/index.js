@@ -58,9 +58,9 @@ class Post extends Component {
 
     const dateFormated = formatDate(postDate);
 
-    const disqusShortname = 'espaco-da-tecnologia';
+    const disqusShortname = process.env.REACT_APP_DISQUS_SHORTNAME;
     const disqusConfig = {
-      url: `https://espacodatecnologia.herokuapp.com${this.props.match.url}`,
+      url: process.env.REACT_APP_BLOG_FRONTEND_DOMAIN + this.props.match.url,
       identifier: post._id,
       title
     };
