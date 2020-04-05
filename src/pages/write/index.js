@@ -28,8 +28,15 @@ class PostWriter extends Component {
   }
 
   static async discoverCategoryIdByCategoryUrl(categoryUrl) {
-    const result = await api.get(`/categories/${categoryUrl}`);
-    return result.data._id;
+    try {
+      const result = await api.get(`/categories/${categoryUrl}`);
+
+      return result.data._id;
+    } catch (error) {
+      const result = await api.get('/categories/no-category');
+
+      return result.data._id;
+    }
   }
 
   static renderComponent(
@@ -128,6 +135,8 @@ class PostWriter extends Component {
     const categoryId = await PostWriter.discoverCategoryIdByCategoryUrl(
       category
     );
+
+    console.log(categoryId);
 
     // eslint-disable-next-line no-restricted-syntax
     for (const component of components) {
