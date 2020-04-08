@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
@@ -73,5 +74,13 @@ class Categories extends Component {
     );
   }
 }
+
+Categories.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      categoryUrl: PropTypes.string.isRequired
+    })
+  }).isRequired
+};
 
 export default Categories;

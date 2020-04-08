@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { formatDate } from '../../lib/date';
 
@@ -42,6 +43,22 @@ const PostPreview = props => {
       </div>
     </article>
   );
+};
+
+PostPreview.propTypes = {
+  post: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    postDate: PropTypes.string.isRequired,
+    elements: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        element: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired
+      })
+    )
+  }).isRequired
 };
 
 export default PostPreview;
