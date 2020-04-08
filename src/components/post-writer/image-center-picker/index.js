@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Writer from '..';
 
-import '../../styles/styles.css';
 import './styles.css';
 
 class ImageCenterPicker extends Writer {

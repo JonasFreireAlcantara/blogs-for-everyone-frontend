@@ -22,10 +22,33 @@
 }
 
 #home-posts-preview {
-  /* background-color: darkseagreen; */
+  /* background-color: aqua; */
   margin: 50px 0px;
   flex: 1;
   padding: 0px 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#home-posts-preview > div {
+  /* background-color: bisque; */
+  flex: 1;
+}
+
+#home-posts-preview > nav {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#home-posts-preview > nav > span {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 .home-posts-preview-horizontal-line {
